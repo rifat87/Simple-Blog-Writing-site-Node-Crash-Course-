@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include ('./partials/head.ejs') %>
+
+    <body>
+        <% const name='My Name is Tahzib' %><!--This way we can write down the js for html -->
+            <p>
+                <%= name %>
+            </p><!--This is for getting the output of the js code in html format-->
+
+
+            <!-- = sign scapes special character and end up with string value instead of html, so whenever we use include we use <%- %> thats it. -->
+            <%- include('./partials/nav.ejs') %>
+
+
+                <div class="Blogs content">
+                    <h2>All Blogs</h2>
+
+                    <!--To open the javaScript-->
+                    <% if(blogs.length> 0) { %>
+                        <% blogs.forEach(blog=> { %>
+                            <a class="single" href="/blogs/<%= blog._id %>">
+                                <h3 class="title">
+                                    <%= blog.title %>
+                                </h3>
+                                <p class="snippet">
+                                    <%= blog.snippet %>
+                                </p>
+                            </a>
+                            <% }) %>
+                                <% } else { %>
+
+                                    <p>
+                                        There is no blog available.
+                                    </p>
+
+                                    <% } %>
+                </div>
+
+                <%- include('./partials/footer.ejs') %>
+    </body>
+
+</html>
